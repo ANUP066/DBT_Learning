@@ -1,7 +1,8 @@
 {{
     config(
         materialized='incremental',
-        incremental_strategy = 'append'
+        incremental_strategy = 'merge',
+        unique_key = 'order_id'
     )
 }}
 
@@ -35,8 +36,7 @@ order_payments as (
 )
 
 select * from final
-{% if is_incremental() %}
-    -- this filter will only be applied on an incremental run
-    where order_date >= (select max(order_date) from {{ this }}) 
-{% endif %}
+where order_date >= (select dateadd('day', -1, max(order_date))
+from analytics.dbt_abujurke.fct_orders)
+
 order by order_date desc
