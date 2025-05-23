@@ -1,13 +1,11 @@
 {{
     config(
         materialized='incremental',
-        incremental_strategy = 'insert_overwrite',
+        incremental_strategy = 'microbatch',
         unique_key = 'order_id',
-        partition_by = {
-            "field": "order_date",
-            "data_type": "date",
-            "granularity": "day"
-        }
+        event_time = 'order_date',
+        begin = '2025-02-13',
+        batch_size = 'day'
     )
 }}
 
