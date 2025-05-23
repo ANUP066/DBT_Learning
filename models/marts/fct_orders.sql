@@ -3,6 +3,7 @@
         materialized = 'incremental',
         unique_key = 'order_id',
         incremental_strategy = 'merge',
+        on_schema_change = 'fail'
     )
 }}
 
@@ -27,7 +28,7 @@ order_payments as (
 
     select
         orders.order_id,
-        orders.customer_id,
+        orders.customer_id as customer_ids,
         orders.order_date,
         coalesce (order_payments.amount, 0) as amount
 
