@@ -1,8 +1,13 @@
 {{
     config(
         materialized='incremental',
-        incremental_strategy = 'delete+insert',
-        unique_key = 'order_id'
+        incremental_strategy = 'insert_overwrite',
+        unique_key = 'order_id',
+        partition_by = {
+            "field": "order_date",
+            "data_type": "date",
+            "granularity": "day"
+        }
     )
 }}
 
