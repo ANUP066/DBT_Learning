@@ -38,5 +38,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   my_new_project:
     # Applies to all files under models/example/
-    example:
+    +required_tests: {"unique.*|not_null":2}
+    marts:
+      +required_tests: {"relationship.*": 1}
       +materialized: table
+    staging:
+      +materialized: view
