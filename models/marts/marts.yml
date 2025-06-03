@@ -27,6 +27,8 @@ models:
         description: dollar spent per order
         tests:
           - assert_column_is_greater_than_five
+          - assert_dollars_spent_are_greater_than_one
+          - average_dollars_spent_greater_than_one
   - name: orders_by_customer_9
     description: how many orders has each customer placed?
     columns:
