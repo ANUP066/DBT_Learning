@@ -14,6 +14,9 @@ models:
               field: customer_id
   - name: fct_orders
     description: orders fact model
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "amount > 5"
     columns:
       - name: order_id
         description: the primary key for orders
