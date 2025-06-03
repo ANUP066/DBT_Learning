@@ -23,6 +23,10 @@ models:
           - relationships:
               to: ref('stg_jaffle_shop__orders')
               field: order_id
+      - name: amount
+        description: dollar spent per order
+        tests:
+          - assert_column_is_greater_than_five
   - name: orders_by_customer_9
     description: how many orders has each customer placed?
     columns:
