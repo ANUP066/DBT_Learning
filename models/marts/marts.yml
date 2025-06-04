@@ -44,6 +44,16 @@ models:
               group_by: [customer_id] 
               row_condition: "order_id is not null" # (Optional)
               strictly: false
+      - name: customer_id
+        tests:
+          - relationships:
+              field: customer_id
+              to: ref('stg_jaffle_shop__customers')
+          - unique:
+              config:
+                severity: warn
+                error_if: ">100"
+                warn_if: ">30"
   - name: orders_by_customer_9
     description: how many orders has each customer placed?
     columns:
