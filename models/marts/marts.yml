@@ -51,9 +51,10 @@ models:
               to: ref('stg_jaffle_shop__customers')
           - unique:
               config:
-                severity: warn
-                error_if: ">100"
-                warn_if: ">30"
+                where: "order_date > '2018-03-01'"
+                #severity: warn
+                #error_if: ">100"
+                #warn_if: ">30"
   - name: orders_by_customer_9
     description: how many orders has each customer placed?
     columns:
