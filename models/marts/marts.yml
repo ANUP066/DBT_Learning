@@ -49,10 +49,10 @@ models:
           - relationships:
               field: customer_id
               to: ref('stg_jaffle_shop__customers')
-          - unique:
-              config:
-                store_failures: true
-                schema: test_failures
+          - unique
+              #config:
+                #store_failures: true
+                #schema: test_failures
                 #limit: 10
                 #where: "order_date > '2018-03-01'"
                 #severity: warn

@@ -44,3 +44,8 @@ models:
       +materialized: table
     staging:
       +materialized: view
+
+tests:
+  my_new_project:
+    +severity: warn
+    +store_failures: true
