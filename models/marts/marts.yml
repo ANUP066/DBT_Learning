@@ -51,7 +51,8 @@ models:
               to: ref('stg_jaffle_shop__customers')
           - unique:
               config:
-                where: "order_date > '2018-03-01'"
+                limit: 10
+                #where: "order_date > '2018-03-01'"
                 #severity: warn
                 #error_if: ">100"
                 #warn_if: ">30"
